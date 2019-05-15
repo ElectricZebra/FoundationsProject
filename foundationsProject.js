@@ -1,5 +1,3 @@
-console.log('js working')
-
 const data = {
   customers: {
     Dwight: {
@@ -28,17 +26,25 @@ const data = {
 const names = document.querySelector('#names');
 const prizes = document.querySelector('#prizes');
 
-// function renderNames () {
-//   const arrCust = [];
-//   const customers = data.customers;
-//   arrCust.push(Object.keys(customers))
-//   return arrCust.join('');
-// }
+const renderPrize = () => {
+  const prize = data.prizes;
+  return `
+  <ul>
+  ${
+    Object.keys(prize).map( key => `
+      <li>
+      ${ key }
+      </li>
+    `).join('')
+  }
+  </ul>
+  `
+}
+prizes.innerHTML = renderPrize();
 
 const renderCustomer = () => {
   const customers = data.customers;
   const arrCust = Object.keys(customers);
-console.log(arrCust);
   return  `
   <ul>
     ${
@@ -51,6 +57,4 @@ console.log(arrCust);
 };
 
 names.innerHTML = renderCustomer();
-
-console.log(renderCustomer());
 
