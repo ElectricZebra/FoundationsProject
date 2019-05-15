@@ -26,17 +26,20 @@ const data = {
 const names = document.querySelector('#names');
 const prizes = document.querySelector('#prizes');
 
+
 const renderPrize = () => {
   const prize = data.prizes;
   return `
   <ul>
   ${
-    Object.keys(prize).map( key => `
+    Object.keys(prize).map(key => `
       <li>
-      ${ key }
+      ${ key} <div>
+      ${ data.prizes[key] }
+        </div>
       </li>
     `).join('')
-  }
+    }
   </ul>
   `
 }
@@ -45,11 +48,11 @@ prizes.innerHTML = renderPrize();
 const renderCustomer = () => {
   const customers = data.customers;
   const arrCust = Object.keys(customers);
-  return  `
+  return `
   <ul>
     ${
-      arrCust.map( key => `
-        <li>${ key }</li>
+    arrCust.map(key => `
+        <li>${ key}</li>
           `).join('')
     }
   </ul>
@@ -57,4 +60,3 @@ const renderCustomer = () => {
 };
 
 names.innerHTML = renderCustomer();
-
