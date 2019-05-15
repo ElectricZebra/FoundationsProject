@@ -28,29 +28,29 @@ const data = {
 const names = document.querySelector('#names');
 const prizes = document.querySelector('#prizes');
 
-function renderNames () {
-  const arrCust = [];
-  const customers = data.customers;
-  arrCust.push(Object.keys(customers))
-  return arrCust.join('');
-}
-// `
-// <ul>
-// ${
-//   Object.keys(data)
+// function renderNames () {
+//   const arrCust = [];
+//   const customers = data.customers;
+//   arrCust.push(Object.keys(customers))
+//   return arrCust.join('');
 // }
-// </ul>
-// `
 
-function renderCustomers () {
+const renderCustomer = () => {
   const customers = data.customers;
-  const arrCust = [];
+  const arrCust = Object.keys(customers);
+console.log(arrCust);
+  return  `
+  <ul>
+    ${
+      arrCust.map( key => `
+        <li>${ key }</li>
+          `).join('')
+    }
+  </ul>
+`
+};
 
-  return arrCust;
-}
+names.innerHTML = renderCustomer();
 
-
-names.innerHTML = renderNames();
-
-console.log(renderNames());
+console.log(renderCustomer());
 
