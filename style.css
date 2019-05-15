@@ -1,3 +1,21 @@
 h1 {
   background-color: blue;
 }
+
+#prizes {
+  background-color: green;
+}
+
+#names {
+  background-color: pink;
+}
+
+ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+li {
+  justify-content: space-around;
+  list-style: none;
+}
