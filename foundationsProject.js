@@ -24,3 +24,33 @@ const data = {
     Coke: 5
   }
 };
+
+const names = document.querySelector('#names');
+const prizes = document.querySelector('#prizes');
+
+function renderNames () {
+  const arrCust = [];
+  const customers = data.customers;
+  arrCust.push(Object.keys(customers))
+  return arrCust.join('');
+}
+// `
+// <ul>
+// ${
+//   Object.keys(data)
+// }
+// </ul>
+// `
+
+function renderCustomers () {
+  const customers = data.customers;
+  const arrCust = [];
+
+  return arrCust;
+}
+
+
+names.innerHTML = renderNames();
+
+console.log(renderNames());
+
