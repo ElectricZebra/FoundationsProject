@@ -45,8 +45,9 @@ const renderPrize = () => {
   ${
     Object.keys(prize).map(key => `
       <li>
-      ${ key} <div>
-      ${ data.prizes[key]}
+      ${ key}
+        <div id='totalPrizeCount'>
+          ${ data.prizes[key]}
         </div>
       </li>
     `).join('')
@@ -64,10 +65,13 @@ const renderCustomer = () => {
         <li>${ key }</li>
           <div id='customerPrizes'>
             ${ Object.keys(prize).map(key2 => `
-              <li>${ key2 }</li>
+              <li>${ key2 }
+              <button>-</button>
               <div id='prizeCount'>
                 ${ customers[key][key2] }
               </div>
+              <button>+</button>
+              </li>
             `).join('')}
           </div>
       `).join('')
@@ -78,6 +82,3 @@ const renderCustomer = () => {
 
 names.innerHTML = renderCustomer();
 
-                // ${ arrCust.map( key3 =>
-                //   `${ custPrizeCount(key) }`
-                // )}

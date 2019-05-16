@@ -6,8 +6,13 @@ h1 {
   background-color: green;
 }
 
+#totalPrizeCount {
+  background-color: magenta;
+}
+
 #names {
   background-color: pink;
+  border: red solid 1px;
 }
 
 ul {
@@ -18,10 +23,13 @@ ul {
 li {
   justify-content: space-around;
   list-style: none;
+  border: dotted green 1px;
+  display: flex;
 }
 
 #customerPrizes {
   background-color: dodgerblue;
+  border: black solid 1px;
 }
 
 #prizeCount {
