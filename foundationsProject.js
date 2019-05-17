@@ -77,15 +77,15 @@ names.innerHTML = renderCustomer();
 names.addEventListener('click', (ev) => {
   const action = ev.target.getAttribute('data-action');
   const targetPrize = ev.target.parentElement.childNodes[0].data;
-  const newTargetPrize = targetPrize.trim();
+  const trimTargetPrize = targetPrize.trim();
   const targetName = ev.target.parentElement.parentElement.parentElement.children[0].innerHTML;
   if (action === 'inc') {
-    customers[targetName][newTargetPrize] += 1;
-    prize[newTargetPrize] += 1;
+    customers[targetName][trimTargetPrize] += 1;
+    prize[trimTargetPrize] -= 1;
   }
   if (action === 'dec') {
-    customers[targetName][newTargetPrize] -= 1;
-    prize[newTargetPrize] -=1;
+    customers[targetName][trimTargetPrize] -= 1;
+    prize[trimTargetPrize] +=1;
   }
 names.innerHTML = renderCustomer();
 prizes.innerHTML = renderPrize();
