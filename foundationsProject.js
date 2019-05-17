@@ -23,13 +23,22 @@ const data = {
   }
 };
 
+/* 
+Good use of const
+ */
 const names = document.querySelector('#names');
 const prizes = document.querySelector('#prizes');
 const prize = data.prizes;
 const customers = data.customers;
 const arrCust = Object.keys(customers);
+/* 
+This variable never gets used...
+ */
 const arrPrizes = Object.keys(prize);
 
+/* 
+Good use of arrow functions!
+ */
 const renderPrize = () => {
   return `
   <ul>
@@ -48,10 +57,16 @@ const renderPrize = () => {
 }
 prizes.innerHTML = renderPrize();
 
+/* 
+Good indentation!
+ */
 const renderCustomer = () => {
   return `
   <ul>
     ${
+      /* 
+      Nice work Mapping!  This is tough stuff!
+       */
       arrCust.map(key => `
         <li class='prizeClass'>${key}</li>
           <div class='customerPrizes'>
@@ -71,16 +86,29 @@ const renderCustomer = () => {
 `
 };
 
+// Great use of innerHTML throughout.
 names.innerHTML = renderCustomer();
 
 
 names.addEventListener('click', (ev) => {
+  /* 
+  Awesome!  Good use of setting and getting attributes!
+   */
   const action = ev.target.getAttribute('data-action');
   const targetPrize = ev.target.parentElement.childNodes[0].data;
   const trimTargetPrize = targetPrize.trim();
   const targetName = ev.target.parentElement.parentElement.parentElement.children[0].innerHTML;
+  /* 
+  If the value of the prize is zero, they shouldn't be able to add any more prizes!  You could just disable the button in that case.  Or you could just not decrement it.
+   */
   if (action === 'inc') {
+    /* 
+    Instead of += 1 you can do ++
+     */
     customers[targetName][trimTargetPrize] += 1;
+    /* 
+    Instead of -= 1 you can do --
+     */
     prize[trimTargetPrize] -= 1;
   }
   if (action === 'dec') {
