@@ -18,7 +18,7 @@ const data = {
   },
   prizes: {
     Stapler: 1,
-    Candy: 5,
+    Candy: 7,
     Coke: 7
   }
 };
@@ -30,15 +30,6 @@ const customers = data.customers;
 const arrCust = Object.keys(customers);
 const arrPrizes = Object.keys(prize);
 
-function custPrizeCount (name, prize) {
-  const countArr = [];
-  for (let key in data.customers[name]) {
-    countArr.push(data.customers[name][key]);
-  }
-  return countArr;
-}
-console.log(custPrizeCount("Michael"));
-
 const renderPrize = () => {
   return `
   <ul>
@@ -46,7 +37,7 @@ const renderPrize = () => {
     Object.keys(prize).map(key => `
       <li>
       ${ key}
-        <div id='totalPrizeCount'>
+        <div class='totalPrizeCount'>
           ${ data.prizes[key]}
         </div>
       </li>
@@ -62,15 +53,15 @@ const renderCustomer = () => {
   <ul>
     ${
       arrCust.map(key => `
-        <li>${ key }</li>
-          <div id='customerPrizes'>
+        <li class='prizeClass'>${key}</li>
+          <div class='customerPrizes'>
             ${ Object.keys(prize).map(key2 => `
               <li>${ key2 }
-              <button>-</button>
-              <div id='prizeCount'>
+              <button data-action='dec'>-</button>
+              <div class='prizeCount'>
                 ${ customers[key][key2] }
               </div>
-              <button>+</button>
+              <button data-action='inc'>+</button>
               </li>
             `).join('')}
           </div>
@@ -80,5 +71,18 @@ const renderCustomer = () => {
 `
 };
 
-names.innerHTML = renderCustomer();
 
+
+names.addEventListener('click', (ev) => {
+  const action = ev.target.getAttribute('data-action');
+  const targetPrize = ev.target.parentElement.childNodes[0].data;
+  const newTargetPrize = targetPrize.trim();
+  const targetName = ev.target.parentElement.parentElement.parentElement.children[0].innerHTML;
+  if (action === 'inc') {
+    customers[targetName][newTargetPrize] += 1;
+  }
+renderCustomer();
+console.log(customers[targetName][newTargetPrize]);
+names.innerHTML = renderCustomer();
+} )
+names.innerHTML = renderCustomer();
