@@ -71,6 +71,7 @@ const renderCustomer = () => {
 `
 };
 
+names.innerHTML = renderCustomer();
 
 
 names.addEventListener('click', (ev) => {
@@ -80,9 +81,13 @@ names.addEventListener('click', (ev) => {
   const targetName = ev.target.parentElement.parentElement.parentElement.children[0].innerHTML;
   if (action === 'inc') {
     customers[targetName][newTargetPrize] += 1;
+    prize[newTargetPrize] += 1;
   }
-renderCustomer();
-console.log(customers[targetName][newTargetPrize]);
+  if (action === 'dec') {
+    customers[targetName][newTargetPrize] -= 1;
+    prize[newTargetPrize] -=1;
+  }
 names.innerHTML = renderCustomer();
+prizes.innerHTML = renderPrize();
 } )
 names.innerHTML = renderCustomer();
