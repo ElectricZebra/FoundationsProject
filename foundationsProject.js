@@ -14,6 +14,11 @@ const data = {
       Stapler: 0,
       Candy: 0,
       Coke: 0
+    },
+    Intern: {
+      Stapler: 0,
+      Candy: 0,
+      Coke: 0
     }
   },
   prizes: {
