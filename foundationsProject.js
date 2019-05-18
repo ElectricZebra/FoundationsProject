@@ -91,3 +91,6 @@ names.innerHTML = renderCustomer();
 prizes.innerHTML = renderPrize();
 } )
 names.innerHTML = renderCustomer();
+
+
+//git test
